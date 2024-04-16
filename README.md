@@ -80,8 +80,8 @@ With this information in hand, the two boards could be connected to the Wemos D1
   - `+5V` => `+5V` on Wemos
   - `GND` => `GND` on Wemos
   - `SET` => `D3` on Wemos
-  - `RX` => `D7` on Wemos
-  - `TX` => `D6` on Wemos
+  - `RX` => `D6` on Wemos
+  - `TX` => `D7` on Wemos
 
 ## Software
 
