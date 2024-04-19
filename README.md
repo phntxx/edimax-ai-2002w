@@ -88,6 +88,12 @@ With this information in hand, the two boards could be connected to the Wemos D1
 I then wrote an Arduino sketch for the Wemos D1 mini that transmits all available
 sensor data to a given broker via MQTT.
 
+To install this Arduino sketch on your Wemos D1 mini, first add the ESP8266 series of boards to your Arduino IDE by following the
+instructions listed [here](https://github.com/esp8266/Arduino?tab=readme-ov-file#installing-with-boards-manager).
+
+Then, simply clone this repository, open `code.ino` in your Arduino IDE, change the variables from line `11` to line `23` to your
+preference and click "Upload".
+
 # References
 
 - [FCC Report: Edimax Edigreen Home AI-2002 - Internal Photos](https://fcc.report/FCC-ID/ndd9520021801/3799812.pdf)
