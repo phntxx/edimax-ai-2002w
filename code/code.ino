@@ -8,16 +8,16 @@
 // BEGIN: Edit these variables to suit your setup
 
 // WiFi details
-#define SSID "9CC9EB4F3DFD"
-#define PSK "SN3979757"
+#define SSID "YOUR-SSID-HERE"
+#define PSK "YOUR-PASSWORD-HERE"
 
 // MQTT broker details
-#define BROKER_IP IPAddress(10, 0, 0, 12)
+#define BROKER_IP IPAddress(0, 0, 0, 0)
 #define BROKER_PORT 1883
 
-#define MQTT_ID "iot-iaq-sensor-3"
-#define MQTT_USER "mqtt"
-#define MQTT_PSK "5mjrq-m0oUy-UbtDu-3RQzf-yIRTv"
+#define MQTT_ID "YOUR-MQTT-ID-HERE"
+#define MQTT_USER "YOUR-MQTT-USERNAME-HERE"
+#define MQTT_PSK "YOUR-MQTT-PASSWORD-HERE"
 
 // Refresh interval (milliseconds)
 #define REFRESH_INTERVAL 30000
