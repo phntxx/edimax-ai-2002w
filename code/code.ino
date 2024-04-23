@@ -7,16 +7,19 @@
 
 // BEGIN: Edit these variables to suit your setup
 
-#define SSID "YOUR-SSID-HERE"
-#define PSK "YOUR-WIFI-PASSWORD-HERE"
+// WiFi details
+#define SSID "9CC9EB4F3DFD"
+#define PSK "SN3979757"
 
-#define BROKER_IP IPAddress(10, 0, 0, 0)
+// MQTT broker details
+#define BROKER_IP IPAddress(10, 0, 0, 12)
 #define BROKER_PORT 1883
 
-#define MQTT_ID "iot-iaq-sensor-0"
-#define MQTT_USER "YOUR-MQTT-USERNAME-HERE"
-#define MQTT_PSK "YOUR-MQTT-PASSWORD-HERE"
+#define MQTT_ID "iot-iaq-sensor-3"
+#define MQTT_USER "mqtt"
+#define MQTT_PSK "5mjrq-m0oUy-UbtDu-3RQzf-yIRTv"
 
+// Refresh interval (milliseconds)
 #define REFRESH_INTERVAL 30000
 
 // END: Edit these variables to suit your setup
@@ -42,7 +45,7 @@ void setup()
 
   WiFi.mode(WIFI_STA);
   WiFi.begin(SSID, PSK);
-
+  
   while (WiFi.status() != WL_CONNECTED)
   {
     delay(1000);
@@ -51,9 +54,11 @@ void setup()
   pms5003.begin();
 
   Wire.begin();
-  sht30.begin();
   vz_89te.begin();
 
+  sht30.begin();
+  sht30.setHeater(false);
+  
   delay(5000);
 }
 

@@ -17,6 +17,7 @@ public:
   SHT30(uint8_t addr = SHT30_ADDRESS, TwoWire *wire = &Wire);
   bool begin();
   bool measure();
+  void setHeater(bool state);
   float temperature();
   float humidity();
 };

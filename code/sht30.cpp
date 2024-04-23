@@ -20,6 +20,14 @@ bool SHT30::begin()
   return this->_wire->endTransmission() == 0;
 }
 
+void SHT30::setHeater(bool state)
+{
+  this->_wire->beginTransmission(this->_addr);
+  this->_wire->write(0x30);
+  this->_wire->write(state ? 0x6D : 0x66);
+  this->_wire->endTransmission();
+}
+
 bool SHT30::measure()
 {
 
