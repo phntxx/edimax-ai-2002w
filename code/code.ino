@@ -44,6 +44,7 @@ void setup()
   Serial.println("Starting up...");
 
   WiFi.mode(WIFI_STA);
+  WiFi.hostname(MQTT_ID);
   WiFi.begin(SSID, PSK);
   
   while (WiFi.status() != WL_CONNECTED)
