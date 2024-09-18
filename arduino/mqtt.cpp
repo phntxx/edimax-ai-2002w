@@ -1,5 +1,15 @@
 #include "mqtt.h"
 
+MQTT::MQTT()
+{
+    this->_state = MQTT_DISCONNECTED;
+    this->stream = NULL;
+    this->bufferSize = 0;
+    setBufferSize(MQTT_MAX_PACKET_SIZE);
+    setKeepAlive(MQTT_KEEPALIVE);
+    setSocketTimeout(MQTT_SOCKET_TIMEOUT);
+}
+
 MQTT::MQTT(IPAddress addr, uint16_t port, Client &client)
 {
     this->_state = MQTT_DISCONNECTED;

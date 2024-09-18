@@ -1,0 +1,144 @@
+substitutions:
+  name: esphome-web-00130a
+  friendly_name: iot-iaq-sensor-2
+
+esphome:
+  name: ${name}
+  friendly_name: ${friendly_name}
+  min_version: 2024.6.0
+  name_add_mac_suffix: false
+  project:
+    name: esphome.web
+    version: dev
+
+external_components:
+  - source: components
+    components:
+      - vz89te
+
+esp8266:
+  board: esp01_1m
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+# Allow Over-The-Air updates
+ota:
+- platform: esphome
+
+# Allow provisioning Wi-Fi via serial
+improv_serial:
+
+wifi:
+  # Set up a wifi access point
+  ap: {}
+
+# In combination with the `ap` this allows the user
+# to provision wifi credentials to the device via WiFi AP.
+captive_portal:
+
+dashboard_import:
+  package_import_url: github://esphome/example-configs/esphome-web/esp8266.yaml@main
+  import_full_config: true
+
+# To have a "next url" for improv serial
+web_server:
+
+i2c:
+  id: i2c_bus
+  sda: GPIO4
+  scl: GPIO5
+  scan: true
+
+uart:
+  id: uart_bus
+  baud_rate: 9600
+  rx_pin: GPIO13
+  tx_pin: GPIO12
+
+switch:
+  - platform: gpio
+    pin: 
+      number: GPIO0
+    id: pms_set
+    name: "Start measuring"
+
+sensor:
+  - platform: pmsx003
+    type: PMS5003S
+    uart_id: uart_bus
+    update_interval: 120s
+    pm_1_0_std:
+      id: pm_1_0_std
+      name: PM1.0
+      unit_of_measurement: "µg/m³"
+    pm_2_5_std:
+      id: pm_2_5_std
+      name: PM2.5
+      unit_of_measurement: "µg/m³"
+    pm_10_0_std:
+      id: pm_10_0_std
+      name: PM10.0
+      unit_of_measurement: "µg/m³"
+    pm_1_0:
+      id: pm_1_0
+      name: PM1.0
+      unit_of_measurement: "µg/m³"
+    pm_2_5:
+      id: pm_2_5
+      name: PM2.5
+      unit_of_measurement: "µg/m³"
+    pm_10_0:
+      id: pm_10_0
+      name: PM10.0
+      unit_of_measurement: "µg/m³"
+    pm_0_3um:
+      id: pm_0_3um
+      name: PM0.3
+      unit_of_measurement: "/dL"
+    pm_0_5um:
+      id: pm_0_5um
+      name: PM0.5
+      unit_of_measurement: "/dL"
+    pm_1_0um:
+      id: pm_1_0um
+      name: PM1.0
+      unit_of_measurement: "/dL"
+    pm_2_5um:
+      id: pm_2_5um
+      name: PM2.5
+      unit_of_measurement: "/dL"
+    pm_5_0um:
+      id: pm_5_0um
+      name: PM5.0
+      unit_of_measurement: "/dL"
+    formaldehyde: 
+      id: formaldehyde
+      name: Formaldehyde
+      unit_of_measurement: "µg/m³"
+  
+  - platform: sht3xd
+    address: 0x44
+    update_interval: 60s
+    heater_enabled: false
+    temperature:
+      id: temperature
+      name: Temperature
+      unit_of_measurement: "°C"
+    humidity: 
+      id: humidity
+      name: Humidity
+      unit_of_measurement: "%"
+
+  - platform: vz89te
+    co2:
+      id: co2
+      name: Carbon Dioxide
+      unit_of_measurement: "ppm"
+    voc:
+      id: voc
+      name: Volatile Organic Compounds
+      unit_of_measurement: "ppb"

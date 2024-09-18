@@ -95,6 +95,7 @@ void PMS5003::wakeUp()
   uint8_t command[] = {0x42, 0x4D, 0xE4, 0x00, 0x01, 0x01, 0x74};
   write(command, sizeof(command));
 
+  // Wait for PMS5003 to wake up
   delay(5000);
 }
 
